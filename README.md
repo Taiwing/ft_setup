@@ -7,14 +7,14 @@ This script installs needed dev dependencies on the 42 mac and linux machines.
 ```shell
 # clone the repo
 git clone https://github.com/Taiwing/ft_setup
-# run it
+# run the script
 cd ft_setup/ && ./ft_setup
 ```
 
 ## Usage
 
-ft\_setup will install the dependencies and the config file by default. It can
-also remove them if needed.
+ft\_setup will install the dependencies and the configuration files by default.
+It can also remove them if needed.
 
 ```
 Usage:
@@ -29,11 +29,11 @@ Options:
 	Show each line of this script before execution.
 
     -i, --install
-	Install brew, cargo and the dependencies. Also creates the config files.
-	This is the default behavior.
+	Install brew, cargo and the dependencies. Also creates the configuration
+	files. This is the default behavior.
 
     -u, --uninstall
         Uninstall brew, cargo, every program installed with them, and remove the
-	config files created by this script (make sure to save them if any local
-	modifications have been made).
+	configuration files created by this script (make sure to save them if
+	any meaningful local modification has been made).
 ```

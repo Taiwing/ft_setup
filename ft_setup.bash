@@ -16,13 +16,13 @@ Options:
 	Show each line of this script before execution.
 
     -i, --install
-	Install brew, cargo and the dependencies. Also creates the config files.
-	This is the default behavior.
+	Install brew, cargo and the dependencies. Also creates the configuration
+	files. This is the default behavior.
 
     -u, --uninstall
         Uninstall brew, cargo, every program installed with them, and remove the
-	config files created by this script (make sure to save them if any local
-	modifications have been made).
+	configuration files created by this script (make sure to save them if
+	any meaningful local modification has been made).
 EOF
 }
 
