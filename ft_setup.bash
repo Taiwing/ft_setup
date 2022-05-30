@@ -28,7 +28,10 @@ EOF
 
 ############################### Handle options #################################
 
+SYSTEM="$(uname)"
 INSTALL="yes"
+SGOINFRE_PATH="/sgoinfre/goinfre/Perso/${whoami}"
+CARGO_HOME="$SGOINFRE_PATH/cargo"
 
 while [ "$1" != "" ]; do
 	case $1 in
@@ -55,8 +58,10 @@ done
 ###################### Install homebrew and rust ###############################
 
 if [ ! -z $INSTALL ]; then
-	yes "" | INTERACTIVE="yes" /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-	curl https://sh.rustup.rs -sSf | sh -s -- -y
+	if [ $SYSTEM != 'Linux' ]; then
+		yes "" | INTERACTIVE="yes" /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	fi
+	CARGO_HOME="$CARGO_HOME" curl https://sh.rustup.rs -sSf | sh -s -- -y
 fi
 
 ######################## Setup shell environment ###############################
@@ -70,21 +75,25 @@ elif [ -d $MACOS_ARM_PREFIX ]; then
 	HOMEBREW_PREFIX=$MACOS_ARM_PREFIX
 elif [ -d $MACOS_INTER_PREFIX ]; then
 	HOMEBREW_PREFIX=$MACOS_INTEL_PREFIX
-else
+elif [ $SYSTEM != 'Linux' ]; then
 	echo ERROR: could not find homebrew install directory
 	exit 1
 fi
 
 if [ ! -z $INSTALL ]; then
-	echo 'eval "$(${HOMEBREW_PREFIX}/bin/brew shellenv)"' >> ~/.bash_profile
-	eval "$(${HOMEBREW_PREFIX}/bin/brew shellenv)"
-	source $HOME/.cargo/env
+	if [ $SYSTEM != 'Linux' ]; then
+		echo 'eval "$(${HOMEBREW_PREFIX}/bin/brew shellenv)"' >> ~/.bash_profile
+		eval "$(${HOMEBREW_PREFIX}/bin/brew shellenv)"
+	fi
+	source $CARGO_HOME/env
 fi
 
 ######################### Install dependencies #################################
 
 if [ ! -z $INSTALL ]; then
-	brew install tmux
+	if [ $SYSTEM != 'Linux' ]; then
+		brew install tmux
+	fi
 	cargo install alacritty bat ripgrep
 fi
 
@@ -94,5 +103,5 @@ if [ -z $INSTALL ]; then
 	yes | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
 	rm -rf $HOMEBREW_PREFIX
 	rustup self uninstall -y
-	rm -rf ~/.cargo
+	rm -rf $CARGO_HOME
 fi
