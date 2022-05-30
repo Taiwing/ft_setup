@@ -85,7 +85,7 @@ fi
 
 if [ ! -z $INSTALL ]; then
 	if [ $SYSTEM != 'Linux' ]; then
-		echo 'eval "$(${HOMEBREW_PREFIX}/bin/brew shellenv)"' >> ~/.bash_profile
+		echo 'eval "$(${HOMEBREW_PREFIX}/bin/brew shellenv)"' >> ~/.profile
 		eval "$(${HOMEBREW_PREFIX}/bin/brew shellenv)"
 	fi
 	source $CARGO_HOME/env
