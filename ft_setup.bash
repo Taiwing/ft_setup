@@ -30,8 +30,9 @@ EOF
 
 SYSTEM="$(uname)"
 INSTALL="yes"
-SGOINFRE_PATH="/sgoinfre/goinfre/Perso/${whoami}"
+SGOINFRE_PATH="/sgoinfre/goinfre/Perso/$(whoami)"
 CARGO_HOME="$SGOINFRE_PATH/cargo"
+RUSTUP_HOME="$SGOINFRE_PATH/rustup"
 
 while [ "$1" != "" ]; do
 	case $1 in
@@ -61,7 +62,9 @@ if [ ! -z $INSTALL ]; then
 	if [ $SYSTEM != 'Linux' ]; then
 		yes "" | INTERACTIVE="yes" /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 	fi
-	CARGO_HOME="$CARGO_HOME" curl https://sh.rustup.rs -sSf | sh -s -- -y
+	export CARGO_HOME
+	export RUSTUP_HOME
+	curl https://sh.rustup.rs -sSf | sh -s -- -y
 fi
 
 ######################## Setup shell environment ###############################
