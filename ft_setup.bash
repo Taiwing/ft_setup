@@ -30,9 +30,9 @@ EOF
 
 SYSTEM="$(uname)"
 INSTALL="yes"
-SGOINFRE_PATH="/sgoinfre/goinfre/Perso/$(whoami)"
-CARGO_HOME="$SGOINFRE_PATH/cargo"
-RUSTUP_HOME="$SGOINFRE_PATH/rustup"
+STORAGE_PATH="$HOME/goinfre"
+CARGO_HOME="$STORAGE_PATH/cargo"
+RUSTUP_HOME="$STORAGE_PATH/rustup"
 
 while [ "$1" != "" ]; do
 	case $1 in

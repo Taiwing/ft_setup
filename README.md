@@ -14,7 +14,9 @@ cd ft_setup/ && ./ft_setup
 ## Usage
 
 ft\_setup will install the dependencies and the configuration files by default.
-It can also remove them if needed.
+It can also remove them if needed. By default it will install the dependencies
+on the local goinfre directory which means the script will have to be re-run on
+each new host machine.
 
 ```
 Usage:
