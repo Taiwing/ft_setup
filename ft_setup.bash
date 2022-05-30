@@ -56,6 +56,18 @@ while [ "$1" != "" ]; do
 	shift
 done
 
+########################## Install Configuration files #########################
+
+if [ ! -z $INSTALL ]; then
+	mkdir -p $HOME/.config/alacritty
+	cp ./config/alacritty.yml $HOME/.config/alacritty
+	cp ./config/bashrc $HOME/.bashrc
+	cp ./config/bash_aliases $HOME/.bash_aliases
+	cp ./config/tmux.conf $HOME/.tmux.conf
+	cp ./config/vimrc $HOME/.vimrc
+fi
+
+
 ###################### Install homebrew and rust ###############################
 
 if [ ! -z $INSTALL ]; then
@@ -107,4 +119,16 @@ if [ -z $INSTALL ]; then
 	rm -rf $HOMEBREW_PREFIX
 	rustup self uninstall -y
 	rm -rf $CARGO_HOME
+fi
+
+######################## Uninstall Configuration files #########################
+
+if [ -z $INSTALL ]; then
+	rm $HOME/.config/alacritty
+	rmdir $HOME/.config/alacritty &> /dev/null
+	rmdir $HOME/.config/ &> /dev/null
+	rm $HOME/.bashrc
+	rm $HOME/.bash_aliases
+	rm $HOME/.tmux.conf
+	rm $HOME/.vimrc
 fi
