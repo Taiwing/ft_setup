@@ -63,6 +63,7 @@ if [ ! -z $INSTALL ]; then
 	cp ./config/alacritty.yml $HOME/.config/alacritty
 	cp ./config/bashrc $HOME/.bashrc
 	cp ./config/bash_aliases $HOME/.bash_aliases
+	cp ./config/profile $HOME/.profile
 	cp ./config/tmux.conf $HOME/.tmux.conf
 	cp ./config/vimrc $HOME/.vimrc
 fi
@@ -129,6 +130,7 @@ if [ -z $INSTALL ]; then
 	rmdir $HOME/.config/ &> /dev/null
 	rm $HOME/.bashrc
 	rm $HOME/.bash_aliases
+	rm $HOME/.profile
 	rm $HOME/.tmux.conf
 	rm $HOME/.vimrc
 fi
