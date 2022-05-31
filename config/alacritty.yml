@@ -120,4 +120,4 @@ shell:
     - tmux_connect
 
 key_bindings:
-  - { key: F11, command: { program: "wmctrl", args: ["-r", ":ACTIVE:", "-b", "toggle,fullscreen" ] } }
+  - { key: F11, action: ToggleFullscreen }
