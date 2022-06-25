@@ -77,6 +77,8 @@ if [ ! -z $INSTALL ]; then
 	fi
 	export CARGO_HOME
 	export RUSTUP_HOME
+	echo "export CARGO_HOME=$CARGO_HOME" >> $HOME/.profile
+	echo "export RUSTUP_HOME=$RUSTUP_HOME" >> $HOME/.profile
 	curl https://sh.rustup.rs -sSf | sh -s -- -y
 fi
 
